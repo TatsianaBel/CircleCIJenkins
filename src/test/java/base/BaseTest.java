@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.IReporter;
 import org.testng.IResultMap;
 import org.testng.ITestContext;
@@ -27,6 +28,12 @@ public class BaseTest {
         String driverPath = System.getenv("driver_path") == null ?
                 "/media/tanik/hdd/Webdriver/chromedriver_linux_90" : System.getenv("driver_path");
         System.setProperty("webdriver.chrome.driver", driverPath);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("disable-infobars");
+        options.addArguments("--disable-browser-side-navigation");
+        options.addArguments("--start-maximized");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver();
         driver.manage().window().setPosition(new Point(0, 0));
         driver.manage().window().setSize(new Dimension(1280, 720));
