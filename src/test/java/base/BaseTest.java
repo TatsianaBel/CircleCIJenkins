@@ -26,7 +26,7 @@ public class BaseTest {
     @BeforeTest
     public void setUp(ITestContext context) {
         String driverPath = System.getenv("driver_path") == null ?
-                "/media/tanik/hdd/Webdriver/chromedriver_linux_90" : System.getenv("driver_path");
+                "src/test/resources/webdrivers/linux.90/chromedriver" : System.getenv("driver_path");
         System.setProperty("webdriver.chrome.driver", driverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
