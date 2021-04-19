@@ -29,12 +29,11 @@ public class BaseTest {
                 "src/test/resources/webdrivers/linux.90/chromedriver" : System.getenv("driver_path");
         System.setProperty("webdriver.chrome.driver", driverPath);
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-infobars");
-        options.addArguments("--disable-browser-side-navigation");
+        options.addArguments("--no-sandbox"); //Bypass OS security model
         options.addArguments("--start-maximized");
-        options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        driver = new ChromeDriver();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.manage().window().setPosition(new Point(0, 0));
         driver.manage().window().setSize(new Dimension(1280, 720));
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
